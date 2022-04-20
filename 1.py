@@ -12,4 +12,4 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.twoSum(nums=[2, 7, 11, 15], target=9))
+    print(solution.twoSum(nums=[2,7,11,15], target=9))
