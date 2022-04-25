@@ -18,7 +18,7 @@ class Solution:
             if self.match_1(s[e:], p[1:]): return True
         return False
 
-    def match_2(self, s, p):
+    def match_2(self, s, p, peak=None):
         ns = len(s)
         if ns == 0:
             for c, x in p:
@@ -36,10 +36,10 @@ class Solution:
                     if self.match_2(s[i:], p[1:]): return True
                 return False
         elif pc == s[0]:
-            n = self.peak(s)
+            n = self.peak(s) if peak is None or peak == 0 else peak
             if px > n: return False
             for i in range(px, n + 1):
-                if self.match_2(s[i:], p[1:]): return True
+                if self.match_2(s[i:], p[1:], n - i): return True
             return False
         else:
             if px == 0: return self.match_2(s, p[1:])
