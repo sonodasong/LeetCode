@@ -1,4 +1,5 @@
 from typing import List
+from bisect import bisect_left, bisect_right
 
 
 # class Solution:
@@ -113,34 +114,33 @@ from typing import List
 class Solution:
 
     def fullBloomFlowers(self, flowers: List[List[int]], persons: List[int]) -> List[int]:
-        n = len(flowers)
-        x = [x for x, _ in flowers]
-        y = [y for _, y in flowers]
-        x.sort()
-        y.sort()
-        d = {}
-        for p in set(persons):
-            # n - self.lbs(x + 1, p)
-            # self.lbs(y, p)
-            d[p] = self.lbs(x, p + 1) - self.lbs(y, p)
+        # n = len(flowers)
+        x = sorted([x for x, _ in flowers])
+        y = sorted([y for _, y in flowers])
+        # d = {}
+        # for p in set(persons):
+        #     # n - self.lbs(x + 1, p)
+        #     # self.lbs(y, p)
+        #     d[p] = self.lbs(x, p + 1) - self.lbs(y, p)
+        d = {p: bisect_right(x, p) - bisect_left(y, p) for p in set(persons)}
         return [d[p] for p in persons]
 
-    def lbs(self, a, x):
-        if x <= a[0]: return 0
-        n = len(a)
-        if x > a[-1]: return n
-        l = 0; r = n
-        while True:
-            m = (l + r) // 2
-            if a[m] == x:
-                if m - l == 1: return m
-                r = m
-            elif r - l == 1:
-                return m + 1
-            elif a[m] > x:
-                r = m
-            elif a[m] < x:
-                l = m
+    # def lbs(self, a, x):
+    #     if x <= a[0]: return 0
+    #     n = len(a)
+    #     if x > a[-1]: return n
+    #     l = 0; r = n
+    #     while True:
+    #         m = (l + r) // 2
+    #         if a[m] == x:
+    #             if m - l == 1: return m
+    #             r = m
+    #         elif r - l == 1:
+    #             return m + 1
+    #         elif a[m] > x:
+    #             r = m
+    #         elif a[m] < x:
+    #             l = m
 
 
 if __name__ == '__main__':
