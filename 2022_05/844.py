@@ -19,4 +19,4 @@ if __name__ == '__main__':
     print(solution.backspaceCompare(s='ab#c', t='ad#c'))
     print(solution.backspaceCompare(s='ab##', t='c#d#'))
     print(solution.backspaceCompare(s='a#c', t='b'))
-    print(solution.backspaceCompare(s="y#fo##f", t="y#f#o##f"))
+    print(solution.backspaceCompare(s='y#fo##f', t='y#f#o##f'))

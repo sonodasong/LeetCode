@@ -24,4 +24,4 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.convert(s="PAYPALISHIRING", numRows=1))
+    print(solution.convert(s='PAYPALISHIRING', numRows=1))
